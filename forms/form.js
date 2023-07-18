@@ -13,6 +13,7 @@ $(document).ready(function () {
     // Validate name
     if (formData.name == "") {
       alert("Please enter a name");
+      return;
     }
 
     // Validate name length
@@ -21,38 +22,34 @@ $(document).ready(function () {
       return;
     }
 
-    // Validate name only contain alphabest 
+    // Validate name only contains alphabets and dots
     if (!/^[a-zA-Z.\s]+$/.test(formData.name)) {
-      alert("Name must contain only Alphabets and dot.");
+      alert("Name must contain only Alphabets and dots.");
       return;
     }
 
-      // Simple email format validation
-      var emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    // Simple email format validation
+    var emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailPattern.test(formData.email)) {
       alert("Please enter a valid email address.");
       return;
     }
 
-    // validate subject
+    // Validate subject
     if (formData.subject == "") {
       alert("Please enter a subject");
       return;
     }
 
-    // validate message
+    // Validate message
     if (formData.message == "") {
       alert("Please enter a message");
+      return;
     }
 
-
-
-    // Submit the form (you can replace this with your own code to send the form data to the server)
+    // Submit the form
     console.log(formData);
     alert("Form submitted successfully!");
-    // You can also use Ajax to send the form data to the server asynchronously
-
-    // Reset the form after successful submission
     submit(formData);
     $("#submit-form")[0].reset();
   });
@@ -61,7 +58,7 @@ $(document).ready(function () {
 function submit(data) {
   $.ajax({
     url: "https://script.google.com/macros/s/AKfycbySS12iM3Vmm-yRx3ueqI8X_fbHZXWszDUj-wo_XT1-1e5C5cXHi6SijTfjF7wUZSQ_/exec",
-    data: data.serialize(),
+    data: data,
     method: "post",
     success: function (response) {
       alert("Form submitted successfully");
@@ -72,4 +69,3 @@ function submit(data) {
     },
   });
 }
-
