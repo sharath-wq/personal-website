@@ -49,7 +49,6 @@ $(document).ready(function () {
 
     // Submit the form
     console.log(formData);
-    alert("Form submitted successfully!");
     submit(formData);
     $("#submit-form")[0].reset();
   });
@@ -69,3 +68,4 @@ function submit(data) {
     },
   });
 }
+
