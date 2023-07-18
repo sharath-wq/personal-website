@@ -10,18 +10,42 @@ $(document).ready(function () {
       message: $("#message").val(),
     };
 
+    // Validate name
+    if (formData.name == "") {
+      alert("Please enter a name");
+    }
+
     // Validate name length
     if (formData.name.length < 3) {
       alert("Name should be at least 3 characters long.");
       return;
     }
 
-    // Simple email format validation
-    var emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    // Validate name only contain alphabest 
+    if (!/^[a-zA-Z.\s]+$/.test(formData.name)) {
+      alert("Name must contain only Alphabets and dot.");
+      return;
+    }
+
+      // Simple email format validation
+      var emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailPattern.test(formData.email)) {
       alert("Please enter a valid email address.");
       return;
     }
+
+    // validate subject
+    if (formData.subject == "") {
+      alert("Please enter a subject");
+      return;
+    }
+
+    // validate message
+    if (formData.message == "") {
+      alert("Please enter a message");
+    }
+
+
 
     // Submit the form (you can replace this with your own code to send the form data to the server)
     console.log(formData);
